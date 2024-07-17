@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI ve Günlük Kalori Hesaplama</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>BMI ve Günlük Kalori Hesaplama</h1>
+        <form id="bmiForm" autocomplete="off">
+            <div class="form-group">
+                <label for="height">Boy (cm):</label>
+                <input type="number" id="height" name="height" required>
+            </div>
+            <div class="form-group">
+                <label for="weight">Kilo (kg):</label>
+                <input type="number" id="weight" name="weight" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Cinsiyet:</label><br>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Erkek</label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Kadın</label><br>
+            </div>
+            <div class="form-group">
+                <label for="age">Yaş:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="activityLevel">Aktiflik Seviyesi:</label>
+                <select id="activityLevel" name="activityLevel" required>
+                    <option value="1">Sedanter (Çok az hareketli)</option>
+                    <option value="2">Hafif aktif (Hafif egzersiz yapılan)</option>
+                    <option value="3">Orta düzeyde aktif (Günde 1 saat egzersiz)</option>
+                    <option value="4">Çok aktif (Günde 2 saat egzersiz)</option>
+                </select>
+            </div>
+            <button type="submit">Hesapla</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
