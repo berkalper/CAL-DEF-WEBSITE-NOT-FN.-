@@ -7,7 +7,6 @@ document.getElementById('bmiForm').addEventListener('submit', function(event) {
     let age = parseInt(document.getElementById('age').value);
     let activityLevel = parseInt(document.getElementById('activityLevel').value);
 
-    // Hata mesajlarını göstermek için bir değişken tanımla
     let errorMessage = '';
 
     if (isNaN(height) || height <= 0) {
@@ -38,7 +37,7 @@ document.getElementById('bmiForm').addEventListener('submit', function(event) {
     
     let bmi = calculateBMI(height, weight);
     let dailyCalories = calculateDailyCalories(weight, height, gender, age, activityLevel);
-    let weightLossCalories = dailyCalories - 500; // Kilo kaybı için günlük kalori ihtiyacını 500 kalori azaltmak yaygın bir yaklaşımdır.
+    let weightLossCalories = dailyCalories - 500;
 
     let result = `BMI Değeriniz: ${bmi.toFixed(1)}<br>`;
     result += `Önerilen Günlük Kalori: ${dailyCalories.toFixed(0)} kcal<br>`;
@@ -53,23 +52,20 @@ function calculateBMI(height, weight) {
 }
 
 function calculateDailyCalories(weight, height, gender, age, activityLevel) {
-    // Basal Metabolic Rate (BMR) - Mifflin-St Jeor Equation
     let bmr;
     
     if (gender === 'male') {
-        bmr = 10 * weight + 6.25 * height - 5 * age + 5; // Erkekler için BMR
+        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
     } else {
-        bmr = 10 * weight + 6.25 * height - 5 * age - 161; // Kadınlar için BMR
+        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
     }
     
-    // Aktiflik seviyesine göre kalori ihtiyacı çarpanları
     let activityMultipliers = {
-        1: 1.2,   // Sedanter (çok az hareketli)
-        2: 1.375, // Hafif aktif (hafif egzersiz yapılan)
-        3: 1.55,  // Orta düzeyde aktif (günde 1 saat egzersiz)
-        4: 1.725  // Çok aktif (günde 2 saat egzersiz)
+        1: 1.2,
+        2: 1.375,
+        3: 1.55,
+        4: 1.725
     };
     
-    // Aktiflik derecesine göre günlük kalori ihtiyacı hesaplama
     return bmr * activityMultipliers[activityLevel];
 }

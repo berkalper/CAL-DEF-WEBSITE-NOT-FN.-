@@ -4,44 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI ve Günlük Kalori Hesaplama</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .background-blur {
+            background: url('https://img.freepik.com/free-photo/green-fruit-with-measurement-copy-space_23-2148256119.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1721001600&semt=ais_user') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(8px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <h1>BMI ve Günlük Kalori Hesaplama</h1>
-        <form id="bmiForm" autocomplete="off">
-            <div class="form-group">
-                <label for="height">Boy (cm):</label>
-                <input type="number" id="height" name="height" required>
-            </div>
-            <div class="form-group">
-                <label for="weight">Kilo (kg):</label>
-                <input type="number" id="weight" name="weight" required>
-            </div>
-            <div class="form-group">
-                <label for="gender">Cinsiyet:</label><br>
-                <input type="radio" id="male" name="gender" value="male" required>
-                <label for="male">Erkek</label><br>
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">Kadın</label><br>
-            </div>
-            <div class="form-group">
-                <label for="age">Yaş:</label>
-                <input type="number" id="age" name="age" required>
-            </div>
-            <div class="form-group">
-                <label for="activityLevel">Aktiflik Seviyesi:</label>
-                <select id="activityLevel" name="activityLevel" required>
-                    <option value="1">Sedanter (Çok az hareketli)</option>
-                    <option value="2">Hafif aktif (Hafif egzersiz yapılan)</option>
-                    <option value="3">Orta düzeyde aktif (Günde 1 saat egzersiz)</option>
-                    <option value="4">Çok aktif (Günde 2 saat egzersiz)</option>
-                </select>
-            </div>
-            <button type="submit">Hesapla</button>
-        </form>
-        <div id="result" class="result"></div>
+<body class="flex flex-col min-h-screen">
+    <div class="background-blur"></div>
+    <div class="flex flex-grow items-center justify-center">
+        <div class="container p-8 rounded-lg shadow-lg max-w-md w-full">
+            <h1 class="text-2xl font-bold mb-4 text-center">BMI ve Günlük Kalori Hesaplama</h1>
+            <form id="bmiForm" autocomplete="off" class="space-y-4">
+                <div class="form-group">
+                    <label for="height" class="block text-left">Boy (cm):</label>
+                    <input type="number" id="height" name="height" required class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="form-group">
+                    <label for="weight" class="block text-left">Kilo (kg):</label>
+                    <input type="number" id="weight" name="weight" required class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="form-group">
+                    <label for="gender" class="block text-left">Cinsiyet:</label><br>
+                    <div class="flex space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" id="male" name="gender" value="male" required class="form-radio">
+                            <span class="ml-2">Erkek</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" id="female" name="gender" value="female" class="form-radio">
+                            <span class="ml-2">Kadın</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="block text-left">Yaş:</label>
+                    <input type="number" id="age" name="age" required class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div class="form-group">
+                    <label for="activityLevel" class="block text-left">Aktiflik Seviyesi:</label>
+                    <select id="activityLevel" name="activityLevel" required class="w-full p-2 border border-gray-300 rounded">
+                        <option value="1">Sedanter (Çok az hareketli)</option>
+                        <option value="2">Hafif aktif (Hafif egzersiz yapılan)</option>
+                        <option value="3">Orta düzeyde aktif (Günde 1 saat egzersiz)</option>
+                        <option value="4">Çok aktif (Günde 2 saat egzersiz)</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Hesapla</button>
+            </form>
+            <div id="result" class="mt-4 p-4 bg-gray-100 rounded"></div>
+        </div>
     </div>
+    <div class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold">Hesaplama Sistemi ve Açıklama</h2>
+        <p class="mt-2">BMI (Vücut Kitle İndeksi), kişinin kilosunun boyunun karesine bölünmesiyle elde edilen bir değerdir. Bu değer, kişinin vücut ağırlığının boyuna göre ne kadar uygun olduğunu belirlemek için kullanılır.</p>
+        <p class="mt-2">Günlük kalori ihtiyacı, kişinin bazal metabolizma hızı (BMR) ve fiziksel aktivite seviyesine göre belirlenir. Erkekler ve kadınlar için BMR hesaplama formülleri farklıdır ve yaş, cinsiyet, boy ve kilo gibi faktörlere dayanır. Aktivite seviyeniz, günlük kalori ihtiyacınızı etkiler ve daha aktif kişiler daha fazla kaloriye ihtiyaç duyar.</p>
+    </div>
+    <footer class="bg-gray-800 text-white text-center py-4 mt-8">
+        <p>Bu site, vücut kitle indeksi (BMI) ve günlük kalori ihtiyacınızı hesaplamanıza yardımcı olmak için tasarlanmıştır. Sağlıklı beslenme ve yaşam tarzı değişiklikleri hakkında profesyonel bir diyetisyene danışmanız önerilir.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
